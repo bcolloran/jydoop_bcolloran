@@ -6,8 +6,8 @@ import subprocess
 
 
 
-extractDate=datetime.datetime.utcnow().isoformat()[0:10]
-
+# extractDate=datetime.datetime.utcnow().isoformat()[0:10]
+extractDate="2014-04-14"
 
 
 if socket.gethostname()=='peach-gw.peach.metrics.scl3.mozilla.com':
@@ -52,22 +52,22 @@ pig -param OUTPUT=/user/bcolloran/data/fhrFullExtract_%s hbase_export.pig -D pig
 '''
 
 
-if batchEnv.onCluster:
-    os.chdir("/home/bcolloran/pig/")
-    command = "pig -param OUTPUT=/user/bcolloran/data/fhrFullExtract_%s hbase_export.pig -D pig.additional.jars=./elephant-bird-core-4.3.jar:./elephant-bird-hadoop-compat-4.3.jar:./elephant-bird-pig-4.3.jar"%extractDate
-    p=subprocess.call(command,shell=True)
-    os.chdir("/home/bcolloran/jydoop_bcolloran2/jydoop/")
+# if batchEnv.onCluster:
+#     os.chdir("/home/bcolloran/pig/")
+#     command = "pig -param OUTPUT=/user/bcolloran/data/fhrFullExtract_%s hbase_export.pig -D pig.additional.jars=./elephant-bird-core-4.3.jar:./elephant-bird-hadoop-compat-4.3.jar:./elephant-bird-pig-4.3.jar"%extractDate
+#     p=subprocess.call(command,shell=True)
 
 
 
 
 
 
-print "\n==== initialize graph parts"
-jydoopBatch.job(batchEnv,
-    "initRecordScan_kDocId_vPartOrTieBreakInfo.py",
-    initInDataPath,
-    "kDocId_vPartOrTieBreakInfo").run()
+# print "\n==== initialize graph parts"
+# os.chdir("/home/bcolloran/jydoop_bcolloran2/jydoop/")
+# jydoopBatch.job(batchEnv,
+#     "initRecordScan_kDocId_vPartOrTieBreakInfo.py",
+#     initInDataPath,
+#     "kDocId_vPartOrTieBreakInfo").run()
 
 
 print "\n==== find initial part overlaps, skip tieBreakInfo"
