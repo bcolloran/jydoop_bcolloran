@@ -21,7 +21,8 @@ if socket.gethostname()=='peach-gw.peach.metrics.scl3.mozilla.com':
         onCluster=True,
         batchName="naive head record extraction")
         #HDFS paths
-    initInDataPath = "/user/bcolloran/data/fhrFullExtract_"+extractDate
+    initInDataPath = "/data/fhr/text/"+(extractDate.replace("-",""))
+    # initInDataPath = "/user/bcolloran/data/fhrFullExtract_"+extractDate
     #"/tmp/full_dumb_export"
     # "/tmp/full_dumb_export/part-m-*01"
     # "/user/bcolloran/data/samples/fhr/v2/withOrphans/2013-11-05/part-r-0001*"
@@ -52,12 +53,11 @@ pig -param OUTPUT=/user/bcolloran/data/fhrFullExtract_%s hbase_export.pig -D pig
 '''
 
 
-if batchEnv.onCluster:
-    os.chdir("/home/bcolloran/pig/")
-    command = "pig -param OUTPUT=/user/bcolloran/data/fhrFullExtract_%s hbase_export.pig -D pig.additional.jars=./elephant-bird-core-4.3.jar:./elephant-bird-hadoop-compat-4.3.jar:./elephant-bird-pig-4.3.jar"%extractDate
-    p=subprocess.call(command,shell=True)
-    os.chdir("/home/bcolloran/jydoop_bcolloran2/jydoop/")
-
+# if batchEnv.onCluster:
+#     os.chdir("/home/bcolloran/pig/")
+#     command = "pig -param OUTPUT=/user/bcolloran/data/fhrFullExtract_%s hbase_export.pig -D pig.additional.jars=./elephant-bird-core-4.3.jar:./elephant-bird-hadoop-compat-4.3.jar:./elephant-bird-pig-4.3.jar"%extractDate
+#     p=subprocess.call(command,shell=True)
+#     os.chdir("/home/bcolloran/jydoop_bcolloran2/jydoop/")
 
 
 
