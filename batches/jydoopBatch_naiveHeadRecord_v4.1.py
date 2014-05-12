@@ -193,7 +193,7 @@ if batchEnv.onCluster:
 hdfs dfs -put /home/bcolloran/jydoop_bcolloran2/jydoop/outData/orphanDetection4/fullExport_2014-02-27_final_naiveHeadRecordDocId.txt /user/bcolloran/data/fhrDeorphaning_2014-02-27/headRecordsFinalDocIds_2014-02-27.txt
 
 # then extract Head record docs with pig script
-pig -param orig=/data/fhr/text/20140505 -param fetchids=/user/bcolloran/data/fhrDeorphaning_2014-05-05/headRecordsFinalDocIds_2014-05-05.txt -param jointype=merge -param output=fhrDeorphaned_2014-05-05 fetch_reports.aphadke.pig
+pig -param orig=/data/fhr/text/20140505 -param fetchids=/user/bcolloran/data/fhrDeorphaning_2014-05-05/headRecordsFinalDocIds.txt -param jointype=merge -param output=fhrDeorphaned_2014-05-05 fetch_reports.aphadke.pig
 '''
     os.chdir("/home/bcolloran/jydoop_bcolloran2/jydoop/")
     command = 'hdfs dfs -put /home/bcolloran/jydoop_bcolloran2/jydoop/outData/orphanDetection4/fullExport_%s_final_naiveHeadRecordDocId.txt /user/bcolloran/data/fhrDeorphaning_%s/headRecordsFinalDocIds.txt'%(extractDate,extractDate)
