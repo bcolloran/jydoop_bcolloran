@@ -11,7 +11,7 @@ def skip_local_output():
     return True
 
 def num_reduce_tasks():
-    return 25
+    return 250
 
 
 setupjob = orphUtils.hdfsjobByType("JYDOOP")
