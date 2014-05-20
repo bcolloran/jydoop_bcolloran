@@ -7,7 +7,7 @@ import subprocess
 
 
 extractDate=datetime.datetime.utcnow().isoformat()[0:10]
-
+extractDate="2014-05-19"
 
 
 if socket.gethostname()=='peach-gw.peach.metrics.scl3.mozilla.com':
