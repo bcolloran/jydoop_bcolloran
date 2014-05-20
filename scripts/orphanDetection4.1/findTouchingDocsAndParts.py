@@ -43,14 +43,14 @@ def map(docId, partId_orTieBreakInfo, context):
         raise TypeError
 
 
-def combine(docId, partIdIter, context):
-    # partIdIter should always reach the combiner as an iter of tuples like:
-    #     [("pid_1"),("pid_2"),...].
-    # need to union these tuples and emit ("pid_1","pid_2",...)
-    partSetOut = set()
-    for partId in partIdIter:
-        partSetOut |= set(partId)
-    context.write(docId,tuple(partSetOut))
+# def combine(docId, partIdIter, context):
+#     # partIdIter should always reach the combiner as an iter of tuples like:
+#     #     [("pid_1"),("pid_2"),...].
+#     # need to union these tuples and emit ("pid_1","pid_2",...)
+#     partSetOut = set()
+#     for partId in partIdIter:
+#         partSetOut |= set(partId)
+#     context.write(docId,tuple(partSetOut))
 
 
 
